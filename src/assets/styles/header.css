@@ -1,0 +1,43 @@
+.header {
+    padding: 20px;
+    box-shadow: 0px -2px 6px 2px rgba(0 0 0 / 0.4);
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr;
+    align-items: center;
+}
+.header__nav {
+}
+
+.header__nav__list {
+    display: grid;
+    align-items: center;
+    gap: 12px;
+}
+
+.header__nav__item {
+}
+.header__nav__link {
+}
+.header__logo {
+    margin-inline: auto;
+    color: red;
+    font-weight: 700;
+    font-size: 32px;
+}
+.header__right {
+}
+
+.header__right > .header__nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.header__nav > .header__nav__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.header__nav__item_user {
+}
+.header__nav__item_cart {
+}
