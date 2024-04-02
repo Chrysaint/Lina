@@ -1,5 +1,5 @@
 <?php
-require_once("./services/dbconnect.php");
+require_once("./services/dblink.php");
 session_start();
 $query = "SELECT * FROM Types ORDER BY TypesName ASC";
 $result = mysqli_query($link, $query);

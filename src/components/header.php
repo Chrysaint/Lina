@@ -1,5 +1,5 @@
 <?php
-include_once('./services/dbconnect.php');
+include_once('./services/dblink.php');
 $user = $_COOKIE['userId'];
 ?>
 
@@ -27,11 +27,12 @@ $user = $_COOKIE['userId'];
     <div class="header__right">
         <ul class="header__nav__list">
             <li class="header__nav__item header__nav__item_user">
-                <a href="<?php if ($user){
+                <a href="<?php
+                if ($user){
                     echo './profile.php';
                 }else {
-                    echo './singin.php';
-                }?>./profile" class="header__nav__item__icon-link">
+                    echo './signin.php';
+                }?>" class="header__nav__item__icon-link">
                     <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M13.294 5.29105C13.294 8.22808 10.9391 10.5831 8 10.5831C5.0619 10.5831 2.70601 8.22808 2.70601 5.29105C2.70601 2.35402 5.0619 0 8 0C10.9391 0 13.294 2.35402 13.294 5.29105ZM8 20C3.66237 20 0 19.295 0 16.575C0 13.8539 3.68538 13.1739 8 13.1739C12.3386 13.1739 16 13.8789 16 16.599C16 19.32 12.3146 20 8 20Z" fill="white"/>
                     </svg>

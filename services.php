@@ -1,5 +1,5 @@
 <?php
-require_once("./services/dbconnect.php");
+require_once("./services/dblink.php");
 session_start();
 $query = "SELECT * FROM Services ORDER BY idServices ASC";
 $result = mysqli_query($link, $query);

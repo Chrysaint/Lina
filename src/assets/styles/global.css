@@ -29,17 +29,21 @@ input[type="radio"] {
 }
 
 .container {
-    max-width: 1140px;
+    max-width: 1360px;
+    margin-top: 50px;
     padding-inline: 20px;
     margin-inline: auto;
 }
 
-.page-title {
-    font-size: var(--font-600);
-    text-align: center;
+.heading {
+    font-size: 24px;
     font-weight: 700;
     margin-bottom: 2.5rem;
     color: var(--primary-color);
+}
+
+.heading-form {
+    text-align: center;
 }
 
 .page__subtitle {

@@ -1,5 +1,5 @@
 <?php
-include('./dbconnect.php');
+include('./dblink.php');
 
 $login = trim($_POST['login']);
 $pass = trim($_POST['pass']);
@@ -14,7 +14,7 @@ if (empty($userData) || $pass != $userData['UsersPassword']) {
     ]);
     return;
 } else {
-    setcookie("user", $userData['idUsers'], time() + (3600 * 24 * 3), "/", '.beauty');
+    setcookie("userId", $userData['idUsers'], time() + (3600 * 24 * 3), "/", '.clotheslina');
     echo json_encode([
         'success' => "Вы успешно авторизовались!",
     ]);

@@ -17,7 +17,7 @@
 .input {
     padding: 12px;
     width: 100%;
-    border: 2px solid var(--secondary-color);
+    border: 2px solid black;
     font-size: var(--font-450);
     transition: all 200ms ease-in;
 }
@@ -35,8 +35,8 @@
 .form__button {
     margin-top: 6px;
     padding: 8px 24px;
-    background-color: var(--accent-color);
-    border: 2px solid var(--accent-color);
+    background-color: black;
+    border: 2px solid black;
     color: var(--white);
     font-size: var(--font-450);
     min-width: 50%;
@@ -47,7 +47,7 @@
 .form__button:hover,
 .form__button:focus-visible {
     background-color: var(--white);
-    color: var(--accent-color);
+    color: black;
 }
 
 .form__link {
@@ -55,20 +55,10 @@
     justify-self: center;
     display: block;
     font-weight: 600;
+    transition: color 200ms ease-in-out;
 }
 
-.form__link::after {
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    content: '';
-    height: 3px;
-    width: 0;
-    background-color: var(--secondary-color);
-    transition: width 200ms ease-in;
-}
-
-.form__link:hover::after,
-.header__nav__link:focus::after {
-    width: 100%;
+.form__link:hover,
+.header__nav__link:focus {
+    color: var(--accent-color);
 }

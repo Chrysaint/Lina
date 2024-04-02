@@ -1,5 +1,5 @@
 <?php
-require_once("./services/dbconnect.php");
+require_once("./services/dblink.php");
 session_start();
 if(!$_COOKIE['user']){
     header("location: ./login.php");

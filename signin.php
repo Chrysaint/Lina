@@ -1,5 +1,5 @@
 <?php
-require_once("./services/dbconnect.php");
+require_once("./services/dblink.php");
 session_start();
 $query = "SELECT * FROM Types ORDER BY TypesName ASC";
 $result = mysqli_query($link, $query);
@@ -17,7 +17,7 @@ include_once('./src/components/head.php')
 
     <main>
         <section class="container">
-            <h2 class="page-title">Авторизация</h2>
+            <h2 class="heading heading-form">Авторизация</h2>
 
             <form action="" class="from">
                 <div class="form__row">
