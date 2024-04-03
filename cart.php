@@ -36,6 +36,19 @@ include_once('./src/components/head.php')
                                 <button class="cart__item__right__actions__remove">Удалить</button>
                             </div>
                         </li>
+                        <li class="cart__item">
+                            <img src="./src/assets/img/catalogue/1.webp" alt="" class="cart__item__img">
+                            <a href="" class="cart__item__name">Куртка зимняя</a>
+                            <div class="cart__item__right">
+                                <div class="cart__item__right__actions">
+                                    <button class="cart__item__right__actions-counter cart__item__right__actions-counter-btn" name="plusBtn">+</button>
+                                    <input type="text" class="cart__item__right__actions-counter cart__item__right__actions-counter__input" value="1">
+                                    <button class="cart__item__right__actions-counter cart__item__right__actions-counter-btn" name="minusBtn">-</button>
+                                </div>
+                                <p class="cart__item__right__actions__price">232 руб.</p>
+                                <button class="cart__item__right__actions__remove">Удалить</button>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <form class="cart__right cart__form">

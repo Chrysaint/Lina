@@ -9,8 +9,11 @@
 }
 .cart__left {
 }
-.cart__items {
+
+.cart__item + .cart__item {
+    margin-top: 28px;
 }
+
 .cart__item {
     display: flex;
     align-items: start;
@@ -18,12 +21,12 @@
     gap: 16px;
 }
 .cart__item__img {
-    width: 100px;
+    width: 150px;
     border-radius: 12px;
 }
 .cart__item__name {
     flex-grow: 1;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
 }
 .cart__item__right {
@@ -37,8 +40,8 @@
     display: flex;
 }
 .cart__item__right__actions-counter {
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
     font-size: 18px;
     border: none;
 }
