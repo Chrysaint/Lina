@@ -1,7 +1,7 @@
 <?php
 require_once("./services/dblink.php");
 session_start();
-$query = "SELECT * FROM Types ORDER BY TypesName ASC";
+$query = "SELECT * FROM Items ORDER BY orderCounter DESС LIMIT 4";
 $result = mysqli_query($link, $query);
 ?>
 <!DOCTYPE html>
@@ -22,16 +22,22 @@ include_once('./src/components/head.php')
         <section class="section popular-section">
             <div class="container">
                 <h2 class="subheading">Популярное</h2>
-                <div class="catalogue">
+                <div class="catalogue catalogue_main-page">
                     <ul class="catalogue__list">
-                        <li class="catalogue__item">
-                            <a href="" class="catalogue__item-link"></a>    
-                            <div class="catalogue__item-img">
-                                <img src="./src/assets/img/catalogue/1.webp" alt="">
-                            </div>
-                            <p class="catalogue__item-name">Курта синяя</p>
-                            <p class="catalogue__item-price">255 руб.</p>
-                        </li>
+                        <?php
+                            while($item = mysqli_fetch_array($result)) {
+                                echo '
+                                    <li class="catalogue__item">
+                                        <a href="item.php?id='.$item['idItems'].'" class="catalogue__item-link"></a>    
+                                        <div class="catalogue__item-img">
+                                            <img src="./src/assets/img/catalogue/'.$item['ItemsImg'].'" alt="">
+                                        </div>
+                                        <p class="catalogue__item-name">'.$item['ItemsName'].'</p>
+                                        <p class="catalogue__item-price">'.$item['ItemsPrice'].' руб.</p>
+                                    </li>
+                                ';
+                            }
+                        ?>
                     </ul>
                 </div>
             </div>

@@ -5,3 +5,7 @@
 .main-page__img {
     object-fit: cover;
 }
+
+.catalogue_main-page {
+    margin-top: 40px;
+}
