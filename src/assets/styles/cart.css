@@ -96,13 +96,19 @@
     flex-direction: column;
     gap: 12px;
 }
+
 .cart__form__row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
 }
+
 .cart__form__input {
     padding: 8px 12px;
     width: 100%;
+}
+
+.cart__form > button {
+    margin-top: auto;
 }

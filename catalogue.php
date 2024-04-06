@@ -1,7 +1,12 @@
 <?php
 require_once("./services/dblink.php");
 session_start();
-$query = "SELECT * FROM Types ORDER BY TypesName ASC";
+if ($_GET['gender']) {
+    $genderId = $_GET['gender'];
+    $query = "SELECT * FROM Items WHERE Genders_idGenders = $genderId";
+} else {
+    $query = "SELECT * FROM Items ORDER BY ItemsName ASC";
+}
 $result = mysqli_query($link, $query);
 ?>
 <!DOCTYPE html>
@@ -20,38 +25,20 @@ include_once('./src/components/head.php')
             <h2 class="heading">Каталог</h2>
             <div class="catalogue">
                 <ul class="catalogue__list">
-                    <li class="catalogue__item">
-                        <a href="" class="catalogue__item-link"></a>    
-                        <div class="catalogue__item-img">
-                            <img src="./src/assets/img/catalogue/1.webp" alt="">
-                        </div>
-                        <p class="catalogue__item-name">Курта синяя</p>
-                        <p class="catalogue__item-price">255 руб.</p>
-                    </li>
-                    <li class="catalogue__item">
-                        <a href="" class="catalogue__item-link"></a>    
-                        <div class="catalogue__item-img">
-                            <img src="./src/assets/img/catalogue/1.webp" alt="">
-                        </div>
-                        <p class="catalogue__item-name">Курта синяя</p>
-                        <p class="catalogue__item-price">255 руб.</p>
-                    </li>
-                    <li class="catalogue__item">
-                        <a href="" class="catalogue__item-link"></a>    
-                        <div class="catalogue__item-img">
-                            <img src="./src/assets/img/catalogue/1.webp" alt="">
-                        </div>
-                        <p class="catalogue__item-name">Курта синяя</p>
-                        <p class="catalogue__item-price">255 руб.</p>
-                    </li>
-                    <li class="catalogue__item">
-                        <a href="" class="catalogue__item-link"></a>    
-                        <div class="catalogue__item-img">
-                            <img src="./src/assets/img/catalogue/1.webp" alt="">
-                        </div>
-                        <p class="catalogue__item-name">Курта синяя</p>
-                        <p class="catalogue__item-price">255 руб.</p>
-                    </li>
+                    <?php
+                        while($item = mysqli_fetch_array($result)) {
+                            echo '
+                                <li class="catalogue__item">
+                                    <a href="item.php?id='.$item['idItems'].'" class="catalogue__item-link"></a>    
+                                    <div class="catalogue__item-img">
+                                        <img src="./src/assets/img/catalogue/'.$item['ItemsImg'].'" alt="">
+                                    </div>
+                                    <p class="catalogue__item-name">'.$item['ItemsName'].'</p>
+                                    <p class="catalogue__item-price">'.$item['ItemsPrice'].' руб.</p>
+                                </li>
+                            ';
+                        }
+                    ?>
                 </ul>
             </div>
         </section>

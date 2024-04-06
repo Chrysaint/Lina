@@ -1,7 +1,7 @@
 <?php
 require_once("./services/dblink.php");
 session_start();
-$query = "SELECT * FROM Items ORDER BY orderCounter DESС LIMIT 4";
+$query = "SELECT * FROM items ORDER BY orderCounter DESC LIMIT 4";
 $result = mysqli_query($link, $query);
 ?>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ include_once('./src/components/head.php')
         </section>
         <section class="section popular-section">
             <div class="container">
-                <h2 class="subheading">Популярное</h2>
+                <h2 class="heading">Популярное</h2>
                 <div class="catalogue catalogue_main-page">
                     <ul class="catalogue__list">
                         <?php

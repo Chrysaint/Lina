@@ -1,9 +1,10 @@
 <?php
 require_once("./services/dblink.php");
 session_start();
-// $itemId = $_GET['id'];
-// $query = "SELECT * FROM Items WHERE idItems = $itemId";
-// $result = mysqli_query($link, $query);
+$itemId = $_GET['id'];
+$query = "SELECT * FROM `items` INNER JOIN colors ON items.Colors_idColors = colors.idColors INNER JOIN types ON items.Types_idTypes = types.idTypes INNER JOIN genders ON items.Genders_idGenders = genders.idGenders WHERE idItems = $itemId";
+$result = mysqli_query($link, $query);
+$item = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,32 +21,32 @@ include_once('./src/components/head.php')
         <section class="section__item">
             <div class="container">
                 <h2 class="heading">
-                    Кукртка ношенная синяя
+                    <?php echo $item['ItemsName']?>
                 </h2>
                 <div class="item__wrapper">
                     <div class="item__wrapper__img">
-                        <img src="./src/assets/img/catalogue/10.webp" alt="">
+                        <img src="./src/assets/img/catalogue/<?php echo $item['ItemsImg']?>" alt="">
                     </div>
                     <div class="item__wrapper__info">
                         <div class="item__wrapper__info-top">
                             <div class="item__wrapper__info-row">
                                 <p class="item__wrapper__info-text">Цвет:</p>
-                                <p class="item__wrapper__info-text">Синий</p>
+                                <p class="item__wrapper__info-text"><?php echo $item['ColorsName']?></p>
                             </div>
                             <div class="item__wrapper__info-row">
                                 <p class="item__wrapper__info-text">Тип:</p>
-                                <p class="item__wrapper__info-text">Куртка</p>
+                                <p class="item__wrapper__info-text"><?php echo $item['TypesName']?></p>
                             </div>
                             <div class="item__wrapper__info-row">
                                 <p class="item__wrapper__info-text">Пол:</p>
-                                <p class="item__wrapper__info-text">Мужской</p>
+                                <p class="item__wrapper__info-text"><?php echo $item['GendersName']?></p>
                             </div>
                         </div>
                         <div class="item__wrapper__info-bottom">
                             <button class="form__button">Добавить в корзину</button>
                             <div class="item__wrapper__info-bottom-price">
                                 <p class="item__wrapper__info-text">Стоимость:</p>
-                                <p class="item__wrapper__info-price">4599 руб.</p>
+                                <p class="item__wrapper__info-price"><?php echo $item['ItemsPrice']?> руб.</p>
                             </div>
                         </div>
                     </div>

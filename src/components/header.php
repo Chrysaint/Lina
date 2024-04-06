@@ -7,12 +7,12 @@ $user = $_COOKIE['userId'];
     <nav class="header__nav">
         <ul class="header__nav__list">
             <li class="header__nav__item">
-                <a href="" class="header__nav__link">
+                <a href="catalogue.php?gender=1" class="header__nav__link">
                     Мужчинам
                 </a>
             </li>
             <li class="header__nav__item">
-                <a href="" class="header__nav__link">
+                <a href="catalogue.php?gender=2" class="header__nav__link">
                     Женщинам
                 </a>
             </li>
