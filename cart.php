@@ -16,39 +16,29 @@ include_once('./src/components/head.php')
     ?>
 
     <main>
+        <template id="cart-item-template">
+            <li class="cart__item" name="cart-item" id="cart-item-id">
+                <img src="./src/assets/img/catalogue/1.webp" alt="" class="cart__item__img">
+                <a href="" class="cart__item__name cart-item-title" name="cart-item-title">Куртка зимняя</a>
+                <div class="cart__item__right">
+                    <div class="cart__item__right__actions">
+                        <button class="cart__item__right__actions-counter cart__item__right__actions-counter-btn" name="plusBtn">+</button>
+                        <input type="text" class="cart__item__right__actions-counter cart__item__right__actions-counter__input cart-item-quantity   " value="1">
+                        <button class="cart__item__right__actions-counter cart__item__right__actions-counter-btn" name="minusBtn">-</button>
+                    </div>
+                    <p class="cart__item__right__actions__price cart-item-price">232 руб.</p>
+                    <button class="cart__item__right__actions__remove" data-item-id="">Удалить</button>
+                </div>
+            </li>
+        </template>
         <section class="container">
             <h2 class="heading">Корзина</h2>
+            <p class="cart_empty not-visible">Корзина пуста...</p>
             <div class="cart">
-                <!-- <p class="cart_empty">Корзина пуста...</p> -->
                 <div class="cart__left">
 
                     <ul class="cart__items">
-                        <li class="cart__item">
-                            <img src="./src/assets/img/catalogue/1.webp" alt="" class="cart__item__img">
-                            <a href="" class="cart__item__name">Куртка зимняя</a>
-                            <div class="cart__item__right">
-                                <div class="cart__item__right__actions">
-                                    <button class="cart__item__right__actions-counter cart__item__right__actions-counter-btn" name="plusBtn">+</button>
-                                    <input type="text" class="cart__item__right__actions-counter cart__item__right__actions-counter__input" value="1">
-                                    <button class="cart__item__right__actions-counter cart__item__right__actions-counter-btn" name="minusBtn">-</button>
-                                </div>
-                                <p class="cart__item__right__actions__price">232 руб.</p>
-                                <button class="cart__item__right__actions__remove">Удалить</button>
-                            </div>
-                        </li>
-                        <li class="cart__item">
-                            <img src="./src/assets/img/catalogue/1.webp" alt="" class="cart__item__img">
-                            <a href="" class="cart__item__name">Куртка зимняя</a>
-                            <div class="cart__item__right">
-                                <div class="cart__item__right__actions">
-                                    <button class="cart__item__right__actions-counter cart__item__right__actions-counter-btn" name="plusBtn">+</button>
-                                    <input type="text" class="cart__item__right__actions-counter cart__item__right__actions-counter__input" value="1">
-                                    <button class="cart__item__right__actions-counter cart__item__right__actions-counter-btn" name="minusBtn">-</button>
-                                </div>
-                                <p class="cart__item__right__actions__price">232 руб.</p>
-                                <button class="cart__item__right__actions__remove">Удалить</button>
-                            </div>
-                        </li>
+
                     </ul>
                 </div>
                 <form class="cart__right cart__form">
@@ -63,6 +53,15 @@ include_once('./src/components/head.php')
                         <input type="text" class="cart__form__input" placeholder="Дом*">
                         <input type="text" class="cart__form__input" placeholder="Квартира*">
                     </div>
+                    <div class="cart__form__row">
+                        <p class="cart__form__row-text cart__form__row-text_bold">Товаров в корзине:</p>
+                        <p class="cart__form__row-text">12</p>
+                    </div>
+                    <div class="cart__form__row">
+                        <p class="cart__form__row-text cart__form__row-text_bold">Итого:</p>
+                        <p class="cart__form__row-text">42442 руб.</p>
+                    </div>
+                    <p class="cart-form-error">Заполните все поля</p>
                     <button type="button" id="order-btn" class="form__button">Оформить заказ</button>
                 </form>
             </div>
@@ -72,6 +71,9 @@ include_once('./src/components/head.php')
     <?php
         include_once('./src/components/footer.php')
     ?>
+    <script type="module" src="./src/assets/js/cartFunctions.js"></script>
+    <script type="module" src="./src/assets/js/main.js"></script>
+    <script type="module" src="./src/assets/js/cart.js"></script>
 </body>
 
 </html>

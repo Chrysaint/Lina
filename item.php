@@ -43,7 +43,7 @@ include_once('./src/components/head.php')
                             </div>
                         </div>
                         <div class="item__wrapper__info-bottom">
-                            <button class="form__button">Добавить в корзину</button>
+                            <button id="item-btn" name="" class="form__button" data-title="<?php echo $item['ItemsName']?>" data-img="<?php echo $item['ItemsImg']?>" data-price="<?php echo $item['ItemsPrice']?>" data-quantity="1" data-id="<?php echo $item['idItems']?>"></button>
                             <div class="item__wrapper__info-bottom-price">
                                 <p class="item__wrapper__info-text">Стоимость:</p>
                                 <p class="item__wrapper__info-price"><?php echo $item['ItemsPrice']?> руб.</p>
@@ -58,6 +58,8 @@ include_once('./src/components/head.php')
     <?php
         include_once('./src/components/footer.php')
     ?>
+    <script type="module" src="./src/assets/js/cartFunctions.js"></script>
+    <script type="module" src="./src/assets/js/item.js"></script>
 </body>
 
 </html>

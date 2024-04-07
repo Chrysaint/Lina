@@ -29,8 +29,7 @@
 
 .form__error {
     position: absolute;
-    color: rgb(182, 2, 2);
-    font-size: var(--font-350);
+    color: var(--accent-color);
 }
 .form__button {
     margin-top: 6px;
@@ -38,7 +37,7 @@
     background-color: black;
     border: 2px solid black;
     color: var(--white);
-    font-size: var(--font-450);
+    font-size: 18px;
     min-width: 50%;
     justify-self: center;
     transition: all 200ms ease-in;

@@ -47,6 +47,8 @@ include_once('./src/components/head.php')
     <?php
         include_once('./src/components/footer.php')
     ?>
+    <script type="module" src="./src/assets/js/cartFunctions.js"></script>
+    <script type="module" src="./src/assets/js/main.js"></script>
 </body>
 
 </html>
