@@ -8,6 +8,8 @@ if(!$userId) {
 $query = "SELECT * FROM Users WHERE idUsers = '$userId'";
 $result = mysqli_query($link, $query);
 $userInfo = mysqli_fetch_array($result);
+$ordersQuery = "SELECT * FROM Orders WHERE Users_idUsers = $userId";
+$ordersResult = mysqli_query($link, $ordersQuery);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +26,7 @@ $userInfo = mysqli_fetch_array($result);
     <main>
 
         <section class="container profile-section">
-            <h2 class="page-title">Профиль</h2>
+            <h2 class="heading">Профиль</h2>
             <div class="profile__wrapper">
                 <div class="profile__data">
                     <h3 class="page-subtitle">Ваши данные:</h3>
@@ -42,9 +44,58 @@ $userInfo = mysqli_fetch_array($result);
                     </div>
                     <a href="./services/logout.php" class="form__button">Выйти из аккаунта</a>
                 </div>
-                <ul class="profile__entries">
-                    
-                </ul>
+                <div class="profile__orders">
+                    <h3 class="page-subtitle">
+                        Ваши заказы
+                    </h3>
+                    <?php
+                        echo '<ul class="profile__order__list">';
+                            
+                            $prevOrder = null;
+                            while($order = mysqli_fetch_array($ordersResult)) {
+                                if ($order == $prevOrder) {
+                                    continue;
+                                }
+                                $prevOrder = $order;
+                                echo '
+                                    <li class="profile__order__item">
+                                        <div class="profile__order__header">
+                                            <p class="profile__order__header__item">Заказ: '.$order['idOrders'].'</p>
+                                            <p class="profile__order__header__item">Адресат: '.$order['OrdersReciever'].'</p>
+                                            <p class="profile__order__header__item">Телефон: '.$order['OrdersPhone'].'</p>
+                                            <p class="profile__order__header__item">Адрес: '.$order['OrdersAddress'].'</p>
+                                            <button data-opened="false" class="menu-arrow-btn">
+                                                <img src="./src/assets/img/logos/arrow.svg" alt="">
+                                            </button>
+                                        </div>
+                                        <div class="profile__order__item__details" data-opened="false">
+                                            <div class="profile__order__item__details__list">
+                                            ';
+                                            $orderId = $order['idOrders'];
+                                            $orderDetailsQuery = "SELECT * FROM orders_has_items INNER JOIN Items ON orders_has_items.Items_idItems = Items.idItems WHERE Orders_idOrders = $orderId";
+                                            $orderDetailsResult = mysqli_query($link, $orderDetailsQuery);
+                                            while($orderDetail = mysqli_fetch_array($orderDetailsResult)){
+                                                echo '
+                                                    <div class="profile__order__item__details__item">
+                                                        <img src="./src/assets/img/catalogue/'.$orderDetail['ItemsImg'].'" alt="" class="profile__order__item__details__img">
+                                                        <p class="profile__order__item__details__text">'.$orderDetail['ItemsName'].'</p>
+                                                        <p class="profile__order__item__details__text profile__order__item__details__text_margin">'.$orderDetail['ItemsCount'].' шт</p>
+                                                        <p class="profile__order__item__details__text ">'.$orderDetail['ItemsTotalPrice'].' руб.</p>
+                                                    </div>
+                                                ';
+                                            }
+                                            echo '
+                                            <p class="profile__order__totalPrice">Итого: '.$order['OrdersPrice'].' руб.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                            
+                                            ';
+                                
+                            }
+                        echo '</ul>';
+                    ?>
+                </div>
             </div>
         </section>
 
@@ -55,6 +106,7 @@ $userInfo = mysqli_fetch_array($result);
     ?>
     <script type="module" src="./src/assets/js/cartFunctions.js"></script>
     <script type="module" src="./src/assets/js/main.js"></script>
+    <script type="module" src="./src/assets/js/dropdown.js"></script>
 </body>
 
 </html>
