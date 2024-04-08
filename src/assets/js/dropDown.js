@@ -13,9 +13,7 @@ function openCloseDropdown (header, list, state) {
 dropdownButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log(e.target);
         const list = e.target.parentNode.nextElementSibling;
-        console.log(list);
         const state = btn.getAttribute('data-opened');
         openCloseDropdown(btn, list, state);
     })

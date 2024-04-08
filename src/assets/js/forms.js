@@ -3,7 +3,6 @@ const passRegex = new RegExp('^[a-zA-Z0-9_.-]{7,}$');
 
 const registrButton = $("#registerButton");
 const loginBtn = $("#login-button");
-const changePassBtn = $("#changePassBtn");
 const orderBtn = $("#order-btn");
 
 
@@ -187,31 +186,6 @@ orderBtn.click((e) => {
             }
             localStorage.clear('items');
             document.location.href = 'http://clotheslina/profile.php';
-        }
-    });   
-})
-
-changePassBtn.click((e) => {
-    e.preventDefault();
-
-    const oldPass = $('#oldPass').val();
-    const newPass = $('#newPass').val();
-    const newPass2 = $('#newPass2').val();
-
-    $.ajax({
-        url: 'http://antikvarramir/services/changePass.php',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-            oldPass: oldPass,
-            newPass: newPass,
-            newPass2: newPass2,
-        },
-        success: (data) => {
-            if(data.err) {
-                return $("#change-pass-error").text(data.err);   
-            }
-            document.location.href = 'http://antikvarramir/profile.php';
         }
     });   
 })

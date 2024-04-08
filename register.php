@@ -1,8 +1,6 @@
 <?php
 require_once("./services/dblink.php");
 session_start();
-$query = "SELECT * FROM Types ORDER BY TypesName ASC";
-$result = mysqli_query($link, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">

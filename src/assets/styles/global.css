@@ -58,43 +58,4 @@ input[type="radio"] {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 2.5rem;
-    color: var(--primary-color);
-}
-
-.heading-form {
-    text-align: center;
-}
-
-.page__subtitle {
-    font-size: 28px;
-    color: var(--secondary-color);
-}
-
-.text {
-    font-size: 18px;
-    line-height: 150%;
-}
-
-.text + .text {
-    margin-top: 12px;
-}
-
-.secondary-btn {
-    padding: 10px 14px;
-    border: 2px solid var(--secondary-color);
-    background-color: #fff;
-    transition: all 200ms ease-in-out;
-}
-
-.secondary-btn:hover,
-.secondary-btn:focus-visible {
-    background-color: var(--secondary-color);
-    color: var(--white);
-}
-
-.hidden_input {
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
 }
