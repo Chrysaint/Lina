@@ -117,6 +117,11 @@
     width: 100%;
 }
 
+.cart__form__input.error {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
 .cart__form > button {
     margin-top: auto;
 }

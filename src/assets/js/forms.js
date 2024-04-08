@@ -4,7 +4,7 @@ const passRegex = new RegExp('^[a-zA-Z0-9_.-]{7,}$');
 const registrButton = $("#registerButton");
 const loginBtn = $("#login-button");
 const changePassBtn = $("#changePassBtn");
-const orderBtn = $("#createOrder");
+const orderBtn = $("#order-btn");
 
 
 loginBtn.click((e) => {
@@ -97,54 +97,96 @@ registrButton.click((e) => {
             if(data.error) {
                 return $("#login-error").text(data.error);   
             }
-            // document.location.href = 'http://clotheslina/profile.php';
+            document.location.href = 'http://clotheslina/profile.php';
         }
     });      
 })
 
 orderBtn.click((e) => {
     e.preventDefault();
-    const priceText = $('.header__cart__text')[0].textContent;
-    const price = priceText.split(' ')[0];
-    const name = $('.cart__form__input[name="name"]').val();
-    const phone = $('.cart__form__input[name="phone"]').val();
-    const address = $('.cart__form__input[name="address"]').val();
+    const totalPriceBlock = document.querySelector('#total-price').textContent;
+    const totalPrice = totalPriceBlock.split(' ')[0];
+    const name = $("#firstName").val();
+    const surname = $("#surname").val();
+    const phone = $("#tel").val();
+    const city = $("#city").val();
+    const street = $("#street").val();
+    const house = $("#house").val();
+    const flat = $("#flat").val();
 
-    const dateBuilder = new Date();
-    let day = dateBuilder.getDay();
-    let month = dateBuilder.getMonth();
-    let year = dateBuilder.getFullYear();
-
-    if (day < 10) {
-        day = '0' + day;
-    }
+    let errorFlag = false;
+    $(".cart-form-error").removeClass("active")
     
-    if (month < 10) {
-        month = '0' + month;
+    if (!name) {
+        $("#fistName").addClass('error');
+        errorFlag = true;
+    } else {
+        $("#firstName").removeClass("error");
     }
-    
-    const date = `${day}.${month}.${year}`;
+    if (!surname) {
+        $("#surname").addClass("error");
+        errorFlag = true;
+    } else {
+        $("#surname").removeClass("error");
+    }
+    if (!phone) {
+        $("#tel").addClass("error");
+        errorFlag = true;
+    } else {
+        $("#tel").removeClass("error");
+    }
+    if (!city) {
+        $("#city").addClass("error");
+        errorFlag = true;
+    } else {
+        $("#city").removeClass("error");
+    }
+    if (!street) {
+        $("#street").addClass("error");
+        errorFlag = true;
+    } else {
+        $("#street").removeClass("error");
+    }
+    if (!house) {
+        $("#house").addClass("error");
+        errorFlag = true;
+    } else {
+        $("#house").removeClass("error");
+    }
+    if (!flat) {
+        $("#flat").addClass("error");
+        errorFlag = true;
+    } else {
+        $("#flat").removeClass("error");
+    }
 
-    const items = JSON.parse(localStorage.getItem('cart'));
+    if (errorFlag) {
+        $(".cart-form-error").addClass("active");
+        return;
+    }
+
+    const address = `г. ${city}, ул. ${street}, д. ${house}, кв. ${flat}`;
+    const reciever = `${name} ${surname}`;
+
+    const items = JSON.parse(localStorage.getItem('items'));
 
     $.ajax({
-        url: 'http://antikvarramir/services/createAnOrder.php',
+        url: 'http://clotheslina/services/makeOrder.php',
         type: 'POST',
         dataType: 'json',
         data: {
-            name: name,
-            phone: phone,
             address: address,
-            price: price,
-            date: date,
+            phone: phone,
+            reciever: reciever,
+            totalPrice: totalPrice,
             items: items
         },
         success: (data) => {
             if(data.err) {
                 return $("#not-filled-error").text(data.err);   
             }
-            localStorage.clear('cart');
-            document.location.href = 'http://antikvarramir/profile.php';
+            localStorage.clear('items');
+            document.location.href = 'http://clotheslina/profile.php';
         }
     });   
 })

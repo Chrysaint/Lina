@@ -66,12 +66,12 @@ input[type="radio"] {
 }
 
 .page__subtitle {
-    font-size: var(--font-700);
+    font-size: 28px;
     color: var(--secondary-color);
 }
 
 .text {
-    font-size: var(--font-450);
+    font-size: 18px;
     line-height: 150%;
 }
 

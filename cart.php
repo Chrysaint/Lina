@@ -1,6 +1,10 @@
 <?php
 require_once("./services/dblink.php");
 session_start();
+$userId = $_COOKIE['user'];
+$userQuery = "SELECT * FROM users WHERE idUsers = $userId";
+$userResult = mysqli_query($link, $userQuery);
+$userData = mysqli_fetch_array($userResult);
 $query = "SELECT * FROM Types ORDER BY TypesName ASC";
 $result = mysqli_query($link, $query);
 ?>
@@ -44,15 +48,15 @@ include_once('./src/components/head.php')
                 </div>
                 <form class="cart__right cart__form">
                     <div class="cart__form__row">
-                        <input type="text" class="cart__form__input" placeholder="Имя*">
-                        <input type="text" class="cart__form__input" placeholder="Фамилия*">
+                        <input type="text" class="cart__form__input" placeholder="Имя*" value="<?php echo $userData['UsersName']?>" id="firstName">
+                        <input type="text" class="cart__form__input" placeholder="Фамилия*" value="<?php echo $userData['UsersSurname']?>" id="surname">
                     </div>
-                    <input type="text" class="cart__form__input" placeholder="Телефон*">
-                    <input type="text" class="cart__form__input" placeholder="Город*">
-                    <input type="text" class="cart__form__input" placeholder="Улица*">
+                    <input type="text" class="cart__form__input" placeholder="Телефон*" value="<?php echo $userData['UsersPhone']?>" id="tel">
+                    <input type="text" class="cart__form__input" placeholder="Город*" id="city">
+                    <input type="text" class="cart__form__input" placeholder="Улица*" id="street">
                     <div class="cart__form__row">
-                        <input type="text" class="cart__form__input" placeholder="Дом*">
-                        <input type="text" class="cart__form__input" placeholder="Квартира*">
+                        <input type="text" class="cart__form__input" placeholder="Дом*" id="house">
+                        <input type="text" class="cart__form__input" placeholder="Квартира*" id="flat">
                     </div>
                     <div class="cart__form__row">
                         <p class="cart__form__row-text cart__form__row-text_bold">Товаров в корзине:</p>
@@ -75,6 +79,10 @@ include_once('./src/components/head.php')
     <script type="module" src="./src/assets/js/cartFunctions.js"></script>
     <script type="module" src="./src/assets/js/main.js"></script>
     <script type="module" src="./src/assets/js/cart.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.js"></script>
+    <script type="module" src="./src/assets/js/forms.js"></script>
+    <script type="module" src="https://unpkg.com/imask"></script>
+    <script type="module" src="./src/assets/js/phoneMask.js"></script>
 </body>
 
 </html>
