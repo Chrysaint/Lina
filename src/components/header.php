@@ -1,6 +1,6 @@
 <?php
 include_once('./services/dblink.php');
-$user = $_COOKIE['userId'];
+$user = $_COOKIE['user'];
 ?>
 
 <header class="header">

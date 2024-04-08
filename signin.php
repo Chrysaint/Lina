@@ -24,7 +24,7 @@ include_once('./src/components/head.php')
                     <input type="text" id="login" class="input" placeholder="Ваш логин">
                 </div>
                 <div class="form__row">
-                    <input type="password" id="passsword" class="input" placeholder="Ваш пароль">
+                    <input type="password" id="password" class="input" placeholder="Ваш пароль">
                     <p class="form__error" id="auth-error"></p>
                 </div>
                 <button type="button" id="login-button" class="form__button">Войти</button>

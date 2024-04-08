@@ -12,7 +12,7 @@ loginBtn.click((e) => {
     const pass = $("#password").val();
 
     $.ajax({
-        url: 'http://beauty/services/login.php',
+        url: 'http://clotheslina/services/login.php',
         type: 'POST',
         dataType: 'json',
         data: {
@@ -21,9 +21,9 @@ loginBtn.click((e) => {
         },
         success: (data) => {
             if(data.err) {
-                return $("#form__error").text(data.err);   
+                return $("#auth-error").text(data.err);   
             }
-            document.location.href = 'http://beauty/profile.php';
+            document.location.href = 'http://clotheslina/profile.php';
         }
     });      
 })
@@ -83,7 +83,7 @@ registrButton.click((e) => {
     if (errorFlag) return;
 
     $.ajax({
-        url: 'http://beauty/services/register.php',
+        url: 'http://clotheslina/services/register.php',
         type: 'POST',
         dataType: 'json',
         data: {
@@ -97,7 +97,7 @@ registrButton.click((e) => {
             if(data.error) {
                 return $("#login-error").text(data.error);   
             }
-            document.location.href = 'http://beauty/profile.php';
+            // document.location.href = 'http://clotheslina/profile.php';
         }
     });      
 })

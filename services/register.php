@@ -1,5 +1,5 @@
 <?php
-include('./dbconnect.php');
+include('./dblink.php');
 
 $login = trim($_POST['login']);
 $pass = trim($_POST['pass']);
@@ -7,7 +7,7 @@ $tel = trim($_POST['tel']);
 $name = trim($_POST['name']);
 $surname = trim($_POST['surname']);
 
-$queryForUser = "SELECT * FROM Users WHERE UserLogin = '$login'";
+$queryForUser = "SELECT * FROM Users WHERE UsersLogin = '$login'";
 $resultForUser = mysqli_query($link, $queryForUser);
 $userData = mysqli_fetch_array($resultForUser);
 
@@ -18,12 +18,13 @@ if ($userData) {
     die();
 }
 
-$queryToCreate = "INSERT INTO users (`UserLogin`, `UserPassword`, `UserPhone`, `UserName`, `UserSurname`) VALUES ('$login', '$pass', '$tel', '$name', '$surname')";
+$queryToCreate = "INSERT INTO users (`UsersLogin`, `UsersPassword`, `UsersPhone`, `UsersName`, `UsersSurname`) VALUES ('$login', '$pass', '$tel', '$name', '$surname')";
 $resultToCreate = mysqli_query($link, $queryToCreate);
 
 $resultToLogin = mysqli_query($link, $queryForUser);
 $dataToLogin = mysqli_fetch_array($resultToLogin);
-setcookie("user", $dataToLogin['idUsers'], time() + (3600 * 24 * 3), "/", '.beauty');
+var_dump($dataToLogin);
+setcookie("user", $dataToLogin['idUsers'], time() + (3600 * 24 * 3), "/", '.clotheslina');
 echo json_encode([
     'success' => "Вы успешно зарегистрировались!"
 ]);
