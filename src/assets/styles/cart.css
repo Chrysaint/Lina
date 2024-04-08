@@ -39,13 +39,13 @@
     border: none;
 }
 
-.cart__item__right__actions-counter[name="plusBtn"] {
+.cart__item__right__actions-counter.minusBtn {
     border-radius: 8px 0px 0px 8px;
     border-block: 1px solid black;
     border-left: 1px solid black;
 }
 
-.cart__item__right__actions-counter[name="minusBtn"] {
+.cart__item__right__actions-counter.plusBtn {
     border-radius: 0px 8px 8px 0px;
     border-block: 1px solid black;
     border-right: 1px solid black;
@@ -86,7 +86,6 @@
 
 .cart__right {
     padding: 16px;
-    /* border: 1px solid black; */
     box-shadow: 0px 0px 4px 2px rgba(0 0 0 / 0.2);
     border-radius: 16px;
 }

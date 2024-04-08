@@ -4,7 +4,7 @@ export function countItems() {
     let count = 0;
     if (items != null) {
         for (let item of items) {
-            count++;
+            count += parseInt(item.quantity);
         }
     }
     if (count <= 0) {
@@ -13,11 +13,12 @@ export function countItems() {
         counter.classList.remove("disabled");
     }
     counter.textContent = count;
+    return count;
 }
 
 export function addToCart(id, price, title, img, quantity) {
     const items = JSON.parse(localStorage.getItem("items"));
-    if(items == null || items.length == 0) {
+    if(items == null) {
         const item = {
             id: id,
             title: title,
@@ -27,11 +28,24 @@ export function addToCart(id, price, title, img, quantity) {
         }
         localStorage.setItem("items", JSON.stringify([item]));
     } else {
-        for (let item of items) {
-            if (item.id == id) {
-                item.quantity++;
-                break;
+        const item = items.find(i => i.id == id);
+        if (item) {
+            for (let item of items) {
+                if (item.id == id) {
+                    item.quantity++;
+                    break;
+                }
             }
+        } else {
+            const newItem = {
+                id: id,
+                title: title,
+                img: img,
+                price: price,
+                quantity: quantity
+            }
+            const newState = [...items, newItem];
+            localStorage.setItem("items", JSON.stringify(newState));
         }
     }
 }
@@ -72,13 +86,12 @@ export function checkIfAdded(btn, itemId) {
     }
 }
 
-export function isCartEmpty(empty, cart) {
+export function countTotalPrice() {
     const items = JSON.parse(localStorage.getItem("items"));
-    if (items == null) {
-        empty.classList.remove = "not-visible";
-        cart.classList.add = "not-visible";
-    } else {
-        empty.classList.add = "not-visible";
-        cart.classList.remove = "not-visible";
-    }
+    if (items == null) return;
+    const total = items.reduce((acc, item) => {
+        acc = acc + (parseInt(item.price) * parseInt(item.quantity));
+        return acc;
+    }, 0);
+    return total;
 }

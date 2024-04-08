@@ -21,6 +21,6 @@ btn.addEventListener('click', (e) => {
     } else if (btnName == "remove-from-cart") {
         removeFromCart(id);
     }
-    checkIfAdded( btn, id);
+    checkIfAdded(btn, id);
     countItems();
 })
