@@ -37,7 +37,7 @@ include_once('./src/components/head.php')
                     <p class="form__error" id="fields-error"></p>
                 </div>
                 <button type="button" id="registerButton" class="form__button">Зарегистрироваться</button>
-                <a href="/login.php" class="form__link">Есть аккаунт?</a>
+                <a href="./signin.php" class="form__link">Есть аккаунт?</a>
             </form>
 
 

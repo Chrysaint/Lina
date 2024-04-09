@@ -3,7 +3,7 @@ include("./services/dblink.php");
 session_start();
 $userId = $_COOKIE['user'];
 if(!$userId) {
-    header("location: ./login.php");
+    header("location: /signin.php");
 }
 $query = "SELECT * FROM Users WHERE idUsers = '$userId'";
 $result = mysqli_query($link, $query);
